@@ -1,6 +1,6 @@
 ---
 name: 报告问题（Bug report）
-about: 详细描述你遇到的问题并寻求社区帮助
+about: 详细描述你遇到的问题并寻求帮助
 title: ''
 labels: ''
 assignees: ''
@@ -28,8 +28,6 @@ assignees: ''
 **系统信息:**
  - 发行平台: [如 微信小程序、H5平台、5+ App等]
  - 操作系统 [如 iOS 12.1.2、Android 7.0]
- - HBuilderX版本 [如使用HBuilderX，则需提供 HBuilderX 版本号]
- - uni-app版本 [如使用Vue-cli创建/运行项目，则提供`npm run info`的运行结果]
  - 设备信息 [如 iPhone8 Plus]
 
 

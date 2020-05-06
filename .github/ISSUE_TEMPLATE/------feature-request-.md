@@ -1,6 +1,6 @@
 ---
 name: 建议新功能（Feature Request）
-about: 对 uni-app 提出改善建议
+about: 对 我 提出改善建议
 title: ''
 labels: enhancement
 assignees: ''
