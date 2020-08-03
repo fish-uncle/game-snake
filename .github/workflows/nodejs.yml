@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm config set @fish:registry http://172.81.212.149:4873
+    - run: npm config set @fish:registry https://npm.shenzhepei.com
     - run: npm ci
     - run: npm run build:prod
     - run: npm run upload
