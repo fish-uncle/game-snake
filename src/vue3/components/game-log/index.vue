@@ -9,7 +9,7 @@ import { computed, defineComponent, reactive, toRefs } from 'vue'
 import Game from '@/core/Game'
 
 export default defineComponent({
-	name: 'log',
+	name: 'game-log',
 	setup() {
 		const game: Game = Game.Instance()
 		const state = reactive({ game })
