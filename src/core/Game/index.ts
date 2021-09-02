@@ -60,7 +60,7 @@ export default class Game extends Factory<Game> {
 
 	move() {
 		//移动蛇身
-		let length = this.snake.body.length - 1
+		const length = this.snake.body.length - 1
 		for (let i = length; i > 0; i--) {
 			//让后面的蛇节的坐标等于前面蛇节的坐标
 			this.snake.body[i][0] = this.snake.body[i - 1][0] //横坐标
@@ -85,8 +85,8 @@ export default class Game extends Factory<Game> {
 
 		//判断蛇吃到食物
 		if (this.snake.body[0][0] == this.food.x && this.snake.body[0][1] == this.food.y) {
-			let x = this.snake.body[length][0]
-			let y = this.snake.body[length][1]
+			const x = this.snake.body[length][0]
+			const y = this.snake.body[length][1]
 			this.score = this.score + 1
 			this.pusLog('分数:' + this.score + '分')
 			this.snake.body = [...this.snake.body, [x, y]]
