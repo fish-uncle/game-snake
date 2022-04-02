@@ -3,8 +3,8 @@ import Food from '@/core/Food'
 import Snake from '@/core/Snake'
 import LogTask from '@/core/Log/task'
 
-const width = 800 // 地图宽度
-const height = 400 // 地图高度
+const width = 1000 // 地图宽度
+const height = 800 // 地图高度
 const blockWidth = 20 // 单元格宽度
 const blockHeight = 20 // 单元格高度
 export default class Game extends Factory<Game> {
@@ -26,7 +26,9 @@ export default class Game extends Factory<Game> {
 		numX: width / blockWidth,
 		numY: height / blockHeight,
 	})
-	timer = null
+	timer: any = null
+	canvas: any = null
+	ctx: any = null
 
 	// 添加日志
 	pusLog(message: string): void {
@@ -40,11 +42,16 @@ export default class Game extends Factory<Game> {
 
 	// 游戏开始
 	start() {
+		this.canvas = document.getElementById('canvas')
+		this.canvas.width = width
+		this.canvas.height = height
+
 		this.score = 0
 		this.snake.reborn()
 		this.status = 'PLAYING'
 		if (this.debug) {
 			this.pusLog('游戏开始……')
+			this.pusLog(`当前速度 ${1000 / this.snake.speed}……`)
 		}
 		this.timer = setInterval(() => {
 			this.move()
@@ -89,6 +96,8 @@ export default class Game extends Factory<Game> {
 			const y = this.snake.body[length][1]
 			this.score = this.score + 1
 			this.pusLog('分数:' + this.score + '分')
+			if (this.snake.speed > 10) this.snake.speed -= 50
+			this.pusLog(`当前速度 ${1000 / this.snake.speed}……`)
 			this.snake.body = [...this.snake.body, [x, y]]
 			this.food.move()
 		}
@@ -96,9 +105,9 @@ export default class Game extends Factory<Game> {
 		//判断撞墙死
 		if (
 			this.snake.body[0][0] < 0 ||
-			this.snake.body[0][0] > 39 ||
+			this.snake.body[0][0] > width / blockWidth - 1 ||
 			this.snake.body[0][1] < 0 ||
-			this.snake.body[0][1] > 19
+			this.snake.body[0][1] > height / blockHeight - 1
 		) {
 			this.pusLog('撞墙死...')
 			this.end()

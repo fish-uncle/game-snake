@@ -7,5 +7,6 @@ export default class Log {
 	constructor(message: string) {
 		this.message = message
 		this.date = format(new Date(), 'yyyy-MM-dd mm:ss')
+		console.log(this.date, this.message)
 	}
 }

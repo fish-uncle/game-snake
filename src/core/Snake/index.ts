@@ -4,14 +4,14 @@ import Factory from '@/core/Base/factory'
 export default class Snake extends Factory<Snake> {
 	width: number // 蛇节宽度
 	height: number // 蛇节高度
-	direct: 'left' | 'up' | 'right' | 'down' = 'down' // 蛇的移动方向
+	direct: 'left' | 'up' | 'right' | 'down' = 'right' // 蛇的移动方向
 	//所有蛇节全部信息
 	body = [
 		[3, 2],
 		[2, 2],
 		[1, 2],
 	]
-	speed = 1000 // 蛇的移动速度
+	speed = 700 // 蛇的移动速度
 
 	constructor(obj: { blockWidth: number; blockHeight: number; numX: number; numY: number }) {
 		super()
@@ -25,7 +25,21 @@ export default class Snake extends Factory<Snake> {
 			[2, 2],
 			[1, 2],
 		]
-		this.speed = 1000
-		this.direct = 'down'
+		this.speed = 700
+		this.direct = 'right'
+		this.draw()
+	}
+
+	draw() {
+		const canvas: any = document.getElementById('canvas')
+		const c: any = canvas.getContext('2d')
+		c.clearRect(0, 0, canvas.width, canvas.height)
+		c.beginPath()
+		for (let i = 0; i < this.body.length; i++) {
+			c.fullStyle = '#ffffff'
+			c.lineStyle = '#ffffff'
+			c.fillRect(this.body[i][0] * 20, this.body[i][1] * 20, 20, 20)
+		}
+		requestAnimationFrame(this.draw.bind(this))
 	}
 }

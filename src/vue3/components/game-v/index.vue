@@ -1,14 +1,12 @@
 <template lang="pug">
 game-map
-	game-waiting(v-if="game.status === 'WAITING' || game.status === 'END'")
-	game-playing(v-if="game.status === 'PLAYING'")
-game-log
+	game-waiting(v-show="game.status === 'WAITING' || game.status === 'END'")
+	game-playing(v-show="game.status === 'PLAYING'")
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRefs, onMounted } from 'vue'
 import gamePlaying from '@/vue3/components/game-playing/index.vue'
 import gameWaiting from '@/vue3/components/game-waitting/index.vue'
-import gameLog from '@/vue3/components/game-log/index.vue'
 import gameMap from '@/vue3/components/game-map/index.vue'
 import Game from '@/core/Game'
 
@@ -17,7 +15,6 @@ export default defineComponent({
 	components: {
 		gameWaiting,
 		gamePlaying,
-		gameLog,
 		gameMap,
 	},
 	setup() {

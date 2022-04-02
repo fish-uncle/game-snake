@@ -33,7 +33,7 @@ export const once = function (el: HTMLElement, event: string, fn: EventListener)
 	on(el, event, listener)
 }
 
-export const getStyle = function (element: HTMLElement, styleName: string): string {
+export const getStyle = function (element: HTMLElement, styleName: string): string | void | null {
 	if (isServer) return
 	if (!element || !styleName) return null
 	styleName = camelize(styleName)
@@ -43,6 +43,7 @@ export const getStyle = function (element: HTMLElement, styleName: string): stri
 	try {
 		const style = element.style[styleName]
 		if (style) return style
+		// @ts-ignore
 		const computed = document.defaultView.getComputedStyle(element, '')
 		return computed ? computed[styleName] : ''
 	} catch (e) {
