@@ -35,11 +35,11 @@ export default defineComponent({
 .game-no-start-bg {
 	top: 0;
 	left: 0;
+	align-items: center;
+	justify-content: center;
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-	align-items: center;
-	justify-content: center;
 	background-color: rgba(0, 0, 0, 0.6);
 }
 </style>
